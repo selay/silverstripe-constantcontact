@@ -33,6 +33,8 @@ composer require /selay/silverstripe-constantcontact
 * Please see Installation info above. 
 * Front end:
 ![alt tag](https://github.com/selay/silverstripe-constantcontact/blob/master/screenshots/front-end.png)
+![alt tag](https://github.com/selay/silverstripe-constantcontact/blob/master/screenshots/front-end-progress.png)
+![alt tag](https://github.com/selay/silverstripe-constantcontact/blob/master/screenshots/front-end-done.png)
 * Back end: 
 ![alt tag](https://github.com/selay/silverstripe-constantcontact/blob/master/screenshots/back-end.png)
 In case of any problem, let me know and I will try to help you at my earliest convenience :)
