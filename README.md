@@ -1,6 +1,6 @@
 Constant Contact Module/Widget for Silverstripe 
 =================
-Allows to add a simple ajax-based signup widget/module for Constant Contact -> fully customizable in CMS Settings.  
+A simple ajax-based Constant Contact signup widget/module for Silverstripe -> fully customizable in CMS Settings.  
 
 ## Requirements
 * SilverStripe 3.1.0 + (May work with 3.0 as well)
