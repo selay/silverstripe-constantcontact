@@ -3,7 +3,7 @@ Constant Contact Module/Widget for Silverstripe
 A simple ajax-based Constant Contact signup widget/module for Silverstripe -> fully customizable in CMS Settings.  
 
 ## Requirements
-* SilverStripe 3.1.0 + (May work with 3.0 as well)
+* SilverStripe 3.1.0 or + (will work with 3.0 if you change one word: private to public $db in SS_ConstantContact.php)
 * PHP PHP 5.3+ with cURL extension for API
 
 ## Features
