@@ -1,0 +1,33 @@
+.constant-contect-signup ul, .constant-contect-signup ul li{
+    list-style:none;
+}
+.constant-contect-signup .right{
+    float:right;
+}
+.constant-contect-signup .left{
+    float:left;
+}
+.constant-contect-signup .spacer-small{
+	width:100%;
+	height:0.46em;
+	clear:both;
+}
+.constant-contect-signup .constant-contact-error-message,
+.constant-contect-signup .constant-contact-success-message{
+	background-color: #ED1B2E;
+/*border: 1px solid #970B0E;*/
+color: #FFF;
+display: block;
+font-weight: bold;
+font-size: 0.7em;
+position: relative;
+padding: 0.8675em 0.5125em 0.75em;
+min-width: 100%;
+margin-bottom:0.5em;
+}
+.constant-contect-signup .constant-contact-success-message{
+	background-color:#5DA423;
+}
+.constant-contect-signup .hide-it{
+	display:none;
+}
