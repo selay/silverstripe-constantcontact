@@ -5,19 +5,15 @@ A simple ajax-based Constant Contact signup widget/module for Silverstripe -> fu
 ## Requirements
 * SilverStripe 3.1.0 or + (will work with 3.0 if you change one word: private to public $db in SS_ConstantContact.php)
 * PHP PHP 5.3+ with cURL extension for API
+* [Silverstripe Multivaluefield](https://github.com/silverstripe-australia/silverstripe-multivaluefield).
 
 ## Features
 * Easy to setup under CMS settings by setting error/success messages/API details and input field classes
 * Uses Constant Contact PHP SDK for v2 API to add/update contact lists. Full SDK is provided for your own extension.
 * No need to configure at the config file level. Just configure in CMS.
-* Supports contact submission to single and multile lists. Options allow setting the submission to a single list or if list id left empty, offers a all lists as checkboxes for user to choose.
+* Supports contact submission to single and multile lists. Options allow setting the submission to a single, selected, or all lists. All available lists are pulled via API, and shown in CMS. If you select only one list, the lists checkbox will not be shown in the front-end. If more than one, they will be displayed as checkboxes. If left empty, all available lists will be listed as checkboxes so that customers can choose which list they want to sign up. 
 * Uses ajax to submit and return the error/success messages which can be customized in CMS. 
 * Provides template to customize with javascript and css files in the project folder 
-
-## Requirements
-
- * SilverStripe 3 [framework](https://github.com/silverstripe/silverstripe-framework) & [cms](https://github.com/silverstripe/silverstripe-cms)
- * [Silverstripe Multivaluefield](https://github.com/silverstripe-australia/silverstripe-multivaluefield).
 
 See `composer.json` for exact set of dependencies.
 
