@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author Elmin wwwelminmail@gmail.com or elmin@selay.com.au
+ * @author Elmin  elmin@selay.com.au 
  * @copyright 2014
  */
 class SS_ConstantContactExtension extends DataExtension { 
@@ -9,7 +9,7 @@ class SS_ConstantContactExtension extends DataExtension {
           'CcTitle'=>'Varchar(255)',
           'CcApiKey'=>'Varchar(255)',
           'CcAccessToken'=>'Varchar(255)',
-          'CcListID'=>'Varchar',
+          'CcListID'=>'MultiValueField',
           'CcDisplayZip'=>'Boolean',
           'CcInfoText'=>'Text',
           'CcRequiredMessage'=>'Varchar(255)',
@@ -21,10 +21,12 @@ class SS_ConstantContactExtension extends DataExtension {
           'CcSubmitButtonClasses'=>'Varchar(255)',
         );  
         public function updateCMSFields(FieldList $fields) {
+              $aLists=singleton('SS_ConstantContactController')->getLists(true);
+
              $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcTitle')->setTitle('Widget Title')->setAttribute('placeholder', 'Widget Title'));
             $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcApiKey')->setTitle('API KEY <span style="color:red">*</span>')->setAttribute('placeholder', 'API KEY'));
             $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcAccessToken')->setTitle('ACCESS TOKEN<span style="color:red">*</span>')->setAttribute('placeholder', 'ACCESS TOKEN'));
-             $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcListID')->setTitle('List ID')->setAttribute('placeholder', 'List ID'));
+             $fields->addFieldToTab("Root.ConstantContact", new MultiValueDropdownField('CcListID', 'Subscription List(s)', $aLists));
             
             $fields->addFieldToTab("Root.ConstantContact", CheckboxField::create('CcDisplayZip')->setTitle('Show Postcode field'));
        
@@ -41,7 +43,8 @@ class SS_ConstantContactExtension extends DataExtension {
 
               $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcSubmitButtonClasses')->setTitle('Submit button classes')->setAttribute('placeholder', 'Please write classes you want for the submit button'));
 
-             $fields->addFieldToTab("Root.ConstantContact", LiteralField::create('LiteralL', 'Please use instructions <a target="_blank" href="https://developer.constantcontact.com/api-keys.html">here </a> to get API and Token. List ID is the list where you want new subscribers to be added. To find your list id, check the url in your ConstantContact account with the target list opened. URL should have ?listid=NUMBER. OR, leave List ID field empty. If empty, it will pull all your available lists and display them in the widget. If you still want to limit users to a single list, you can grab list id from the checkbox value in the widget. <div style="color:red">* All fields above are REQUIRED</div>'));
+             $fields->addFieldToTab("Root.ConstantContact", LiteralField::create('LiteralL', 'Please use instructions <a target="_blank" href="https://developer.constantcontact.com/api-keys.html">here </a> to get API and Token. 
+               <div> If you select only one list above, the lists checkbox will not be shown in the front-end. If more than one, they will be displayed as checkboxes. If left empty, all available lists will be listed as checkboxes.</div> <div style="color:red">* All fields above are REQUIRED</div>'));
 
         }
      public static function hasMethod(){}
@@ -53,15 +56,15 @@ class SS_ConstantContactExtension extends DataExtension {
         Requirements::css( CONSTANT_CONTACT_BASE . '/css/cc_ccs.css');
         Requirements::javascript( CONSTANT_CONTACT_BASE . '/js/cc_js.js');
         $config=SiteConfig::current_site_config();
-        if ($config->CcListID)
-           $listfield=HiddenField::create('list')->setValue(SiteConfig::current_site_config()->CcListID);
+
+        $listIDs=$config->CcListID->getValues();
+       
+        if (is_array( $listIDs))
+        if (count( $listIDs)==1)
+           $listfield=HiddenField::create('list')->setValue(reset( $listIDs));
         else {
-            $inArray=array();
-            $lists=singleton('SS_ConstantContactController')->getLists();
-            if ($lists)
-             foreach ($lists as $list) 
-                 $inArray[$list->id]=$list->name;
-               $listfield=CheckboxSetField::create('list', 'List Options', $inArray)->addExtraClass('form-control '.$config->CcInputFieldClasses);
+               $lists=singleton('SS_ConstantContactController')->getLists(true,  $listIDs);
+               $listfield=CheckboxSetField::create('list', 'List Options', $lists)->addExtraClass('form-control '.$config->CcInputFieldClasses);
         }
 
           

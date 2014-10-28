@@ -14,6 +14,13 @@ A simple ajax-based Constant Contact signup widget/module for Silverstripe -> fu
 * Uses ajax to submit and return the error/success messages which can be customized in CMS. 
 * Provides template to customize with javascript and css files in the project folder 
 
+## Requirements
+
+ * SilverStripe 3 [framework](https://github.com/silverstripe/silverstripe-framework) & [cms](https://github.com/silverstripe/silverstripe-cms)
+ * [Silverstripe Multivaluefield](https://github.com/silverstripe-australia/silverstripe-multivaluefield).
+
+See `composer.json` for exact set of dependencies.
+
 
 ## Installation
 * Download the module https://github.com/selay/silverstripe-constantcontact 
