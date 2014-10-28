@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Elmin wwwelminmail@gmail.com or elmin@selay.com.au
+ * @author Elmin  wwwelminmail@gmail.com
  * @copyright 2014
  */
 
