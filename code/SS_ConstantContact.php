@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author Elmin  wwwelminmail@gmail.com
+ * @author Elmin elmin@selay.com.au
  * @copyright 2014
  */
 class SS_ConstantContactExtension extends DataExtension { 
@@ -10,6 +10,7 @@ class SS_ConstantContactExtension extends DataExtension {
           'CcApiKey'=>'Varchar(255)',
           'CcAccessToken'=>'Varchar(255)',
           'CcListID'=>'MultiValueField',
+          'CcListCache'=>'Text',
           'CcDisplayZip'=>'Boolean',
           'CcInfoText'=>'Text',
           'CcRequiredMessage'=>'Varchar(255)',
@@ -20,6 +21,16 @@ class SS_ConstantContactExtension extends DataExtension {
           'CcSubmitButtonText'=>'Varchar',
           'CcSubmitButtonClasses'=>'Varchar(255)',
         );  
+        public function onAfterWrite(){
+
+              $listIDs=$this->owner->CcListID->getValues();
+              $lists=serialize(singleton('SS_ConstantContactController')->getLists(true,  $listIDs));
+              if ($lists!= $this->owner->CcListCache){
+                $this->owner->CcListCache=$lists;
+                $this->owner->write();
+              }
+           
+        }
         public function updateCMSFields(FieldList $fields) {
               $aLists=singleton('SS_ConstantContactController')->getLists(true);
 
@@ -27,7 +38,7 @@ class SS_ConstantContactExtension extends DataExtension {
             $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcApiKey')->setTitle('API KEY <span style="color:red">*</span>')->setAttribute('placeholder', 'API KEY'));
             $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcAccessToken')->setTitle('ACCESS TOKEN<span style="color:red">*</span>')->setAttribute('placeholder', 'ACCESS TOKEN'));
              $fields->addFieldToTab("Root.ConstantContact", new MultiValueDropdownField('CcListID', 'Subscription List(s)', $aLists));
-            
+
             $fields->addFieldToTab("Root.ConstantContact", CheckboxField::create('CcDisplayZip')->setTitle('Show Postcode field'));
        
             $fields->addFieldToTab("Root.ConstantContact", TextareaField::create('CcInfoText')->setTitle('Message under Title')->setAttribute('placeholder', 'This text will be displayed under Title in the widget.'));
@@ -55,18 +66,26 @@ class SS_ConstantContactExtension extends DataExtension {
 
         Requirements::css( CONSTANT_CONTACT_BASE . '/css/cc_ccs.css');
         Requirements::javascript( CONSTANT_CONTACT_BASE . '/js/cc_js.js');
-        $config=SiteConfig::current_site_config();
+        $config=$this->owner;
 
         $listIDs=$config->CcListID->getValues();
-       
-        if (is_array( $listIDs))
+      
+        if (is_array( $listIDs)){
         if (count( $listIDs)==1)
            $listfield=HiddenField::create('list')->setValue(reset( $listIDs));
         else {
-               $lists=singleton('SS_ConstantContactController')->getLists(true,  $listIDs);
+               $lists=$this->owner->CcListCache;
+               if (!$lists){ 
+                   $lists=singleton('SS_ConstantContactController')->getLists(true,  $listIDs);
+                   if ($lists) {
+                    $this->owner->CcListCache=serialize($lists);
+                    $this->owner->write();
+                  }
+               } else $lists=unserialize($lists);
+
                $listfield=CheckboxSetField::create('list', 'List Options', $lists)->addExtraClass('form-control '.$config->CcInputFieldClasses);
         }
-
+      } else return false; 
           
           $fields = new FieldList(array(
                  TextField::create('email')->setTitle('')->addExtraClass('form-control '.$config->CcInputFieldClasses)->setAttribute('placeholder', 'Email'),
