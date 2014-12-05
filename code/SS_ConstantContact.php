@@ -37,7 +37,10 @@ class SS_ConstantContactExtension extends DataExtension {
              $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcTitle')->setTitle('Widget Title')->setAttribute('placeholder', 'Widget Title'));
             $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcApiKey')->setTitle('API KEY <span style="color:red">*</span>')->setAttribute('placeholder', 'API KEY'));
             $fields->addFieldToTab("Root.ConstantContact", TextField::create('CcAccessToken')->setTitle('ACCESS TOKEN<span style="color:red">*</span>')->setAttribute('placeholder', 'ACCESS TOKEN'));
-             $fields->addFieldToTab("Root.ConstantContact", new MultiValueDropdownField('CcListID', 'Subscription List(s)', $aLists));
+            $contactList = ($this->owner->CcApiKey && $this->owner->CcAccessToken)
+                ? new MultiValueDropdownField('CcListID', 'Subscription List(s)', $aLists)
+                : LiteralField::create('CcListNote', '<strong>You can select your subscriber lists(s) after saving your API KEY and ACCESS TOKEN</strong>');
+            $fields->addFieldToTab("Root.ConstantContact", $contactList);
 
             $fields->addFieldToTab("Root.ConstantContact", CheckboxField::create('CcDisplayZip')->setTitle('Show Postcode field'));
        
