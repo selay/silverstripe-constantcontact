@@ -57,8 +57,7 @@ This module is available free of charge. I am constantly looking for ways to pro
 if you have ended up here searching for free stuff, you know and appreciate the value of the time and energy, right?
 You can contriute a small amount you afford to buy me a coffee as encouragement and appreciation if you like. Please do not donate if you don't afford or this donation can affect your financial situation.  
 
-[![alt tag](https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9DYDUD9TBH8PN)
-
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9DYDUD9TBH8PN" target="_blank">
 ![alt tag](https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif)</a>
+
 Enjoy this module and contact me if you need any help. I will do my best to get back to you within 12-14 hours. 
