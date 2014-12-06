@@ -59,4 +59,6 @@ You can contriute a small amount you afford to buy me a coffee as encouragement 
 
 [![alt tag](https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9DYDUD9TBH8PN)
 
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9DYDUD9TBH8PN" target="_blank">
+![alt tag](https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif)</a>
 Enjoy this module and contact me if you need any help. I will do my best to get back to you within 12-14 hours. 
