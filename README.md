@@ -52,3 +52,16 @@ Please consider these obvious stuff faciliate the issue resolution.
 
 It is not language dependent, and all texts can be custmized under Settings.
 
+### Donation 
+This module is available free of charge. I am constantly looking for ways to produce more free stuff for you.  
+if you have ended up here searching for free stuff, you know and appreciate the value of the time and energy, right?
+You can contriute a small amount you afford to buy me a coffee as encouragement and appreciation if you like. Please do not donate if you don't afford or this donation can affect your financial situation.  
+Enjoy this module and contact me if you need any help. I will do my best to get back to you within 18 hours. 
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="9DYDUD9TBH8PN">
+<input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+</form>
+
