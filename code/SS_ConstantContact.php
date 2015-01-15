@@ -65,7 +65,7 @@ class SS_ConstantContactExtension extends DataExtension {
      public static function Link(){}
 
 
-     public function SS_ConstantContactFrom(){
+     public function SS_ConstantContactForm(){
 
         Requirements::css( CONSTANT_CONTACT_BASE . '/css/cc_ccs.css');
         Requirements::javascript( CONSTANT_CONTACT_BASE . '/js/cc_js.js');

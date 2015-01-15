@@ -1,5 +1,5 @@
-<% if SiteConfig.SS_ConstantContactFrom %>
-<% with SiteConfig.SS_ConstantContactFrom %>
+<% if SiteConfig.SS_ConstantContactForm %>
+<% with SiteConfig.SS_ConstantContactForm %>
 <div class="constant-contact-signup-widget">
 
 <div class="constant-contact-signup-title"> $Top.SiteConfig.CcTitle</div>
